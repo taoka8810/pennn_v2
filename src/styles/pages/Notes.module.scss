@@ -1,0 +1,139 @@
+@use "../globals/forward.scss" as *;
+
+.inner {
+  margin: 100px auto 0;
+  padding: 0 50px;
+  max-width: 900px;
+  @include tb {
+    max-width: 600px;
+  }
+  @include sp {
+    margin-top: 50px;
+    padding: 0 10px;
+    max-width: 400px;
+  }
+}
+
+.title {
+  font-size: 50px;
+  color: #fff;
+  font-family: "Shrikhand", cursive;
+  text-align: center;
+}
+
+.category_button_list {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 50px;
+  @include sp {
+    gap: 20px;
+  }
+}
+
+.radio_button {
+  display: none;
+}
+
+.category_button_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.category_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  background-color: $COLOR_BLACK_LIGHT;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  &[data-category="all"] {
+    border: 2px solid #4193e0;
+  }
+  &[data-category="web"] {
+    border: 2px solid #dd515f;
+  }
+  &[data-category="hobby"] {
+    border: 2px solid #e7a350;
+  }
+  &[data-category="other"] {
+    border: 2px solid #04b687;
+  }
+}
+
+.radio_button:checked + .category_button {
+  width: 70px;
+  height: 70px;
+  border: none;
+  border-radius: 15px;
+  animation: categoryButtonClick 0.3s;
+  cursor: pointer;
+  &[data-category="all"] {
+    background-color: #4193e0;
+    border: 2px solid #4193e0;
+  }
+  &[data-category="web"] {
+    background-color: #dd515f;
+    border: 2px solid #dd515f;
+  }
+  &[data-category="hobby"] {
+    background-color: #e7a350;
+    border: 2px solid #e7a350;
+  }
+  &[data-category="other"] {
+    background-color: #04b687;
+    border: 2px solid #04b687;
+  }
+}
+
+.category_button img {
+  width: 20px;
+  height: 20px;
+}
+
+.category_name {
+  text-align: center;
+  margin-top: 9px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.8px;
+  color: $COLOR_WHITE;
+}
+
+.article_list[data-is-show="true"] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 90px 0;
+  @include tb {
+    gap: 20px;
+  }
+  @include sp {
+    gap: 20px;
+  }
+}
+
+.article_list[data-is-show="false"] {
+  display: none;
+}
+
+@keyframes categoryButtonClick {
+  from {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  75% {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}

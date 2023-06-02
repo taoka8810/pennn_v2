@@ -1,0 +1,20 @@
+@use "./forward.scss" as *;
+
+body {
+  position: relative;
+  background-color: $COLOR_BLACK;
+  overflow-x: hidden;
+}
+
+.preload {
+  animation: none;
+}
+
+#myRocket {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -10;
+}

@@ -1,0 +1,25 @@
+@use "../globals/forward.scss" as *;
+
+.only_pc {
+  @include sp {
+    display: none;
+  }
+}
+
+.only_tb {
+  @include pc {
+    display: none;
+  }
+  @include sp {
+    display: none;
+  }
+}
+
+.only_sp {
+  @include pc {
+    display: none;
+  }
+  @include tb {
+    display: none;
+  }
+}

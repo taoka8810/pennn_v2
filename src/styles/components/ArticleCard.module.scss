@@ -1,0 +1,122 @@
+@use "../globals/forward.scss" as *;
+
+.wrapper {
+  position: relative;
+  border-radius: 10px;
+  background-color: $COLOR_BLACK_LIGHT;
+  border-radius: 10px;
+  animation-name: cardOut;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  &:hover {
+    animation-name: cardOver;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+  }
+  &[data-type="archive"] {
+    width: calc((100% - 90px) / 4);
+    @include tb {
+      width: calc((100% - 40px) / 3);
+    }
+    @include sp {
+      width: calc((100% - 20px) / 2);
+    }
+  }
+  @include sp {
+    &:hover {
+      animation-name: tileClick 0.3s;
+    }
+  }
+}
+
+.wrapper a {
+  text-decoration: none;
+}
+
+.category {
+  position: absolute;
+  padding: 10px 14px;
+  border-radius: 10px 0 0 0;
+  font-size: 12px;
+  font-weight: bold;
+  color: $COLOR_WHITE;
+  &[data-category="web"] {
+    background-color: #dd515f;
+  }
+  &[data-category="hobby"] {
+    background-color: #e7a350;
+  }
+  &[data-category="other"] {
+    background-color: #04b687;
+  }
+  @include tb {
+    font-size: 10px;
+    padding: 6px 8px;
+  }
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 110px;
+  @include tb {
+    height: 100px;
+  }
+}
+
+.icon img {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px 10px 0 0;
+  object-fit: cover;
+}
+
+.info {
+  padding: 20px;
+  @include tb {
+    padding: 10px;
+  }
+}
+
+.title {
+  margin-bottom: 30px;
+  line-height: 24px;
+  color: $COLOR_WHITE;
+  font-weight: bold;
+  font-size: 16px;
+  @include tb {
+    font-size: 13px;
+  }
+}
+
+.date {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 12px;
+  color: rgb(120, 120, 120);
+  @include tb {
+    font-size: 10px;
+    bottom: 10px;
+    right: 10px;
+  }
+}
+
+@keyframes cardOut {
+  0% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes cardOver {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}

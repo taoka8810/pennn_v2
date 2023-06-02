@@ -1,0 +1,19 @@
+$tb: 800px;
+$pc: 801px;
+$sp: 501px;
+
+@mixin sp {
+  @media screen and (max-width: ($sp)) {
+    @content;
+  }
+}
+@mixin tb {
+  @media screen and (min-width: ($sp)) and (max-width: ($tb)) {
+    @content;
+  }
+}
+@mixin pc {
+  @media screen and (min-width: ($pc)) {
+    @content;
+  }
+}

@@ -1,0 +1,29 @@
+@use "../globals/forward.scss" as *;
+
+.inner {
+  margin: 160px auto 0;
+  padding: 0 50px;
+  max-width: 900px;
+  @include tb {
+    max-width: 600px;
+  }
+  @include sp {
+    margin-top: 50px;
+    padding: 0 10px;
+    max-width: 400px;
+  }
+}
+
+.title {
+  font-size: 50px;
+  color: #fff;
+  font-family: "Shrikhand", cursive;
+  text-align: center;
+}
+
+.text {
+  margin-top: 50px;
+  text-align: center;
+  color: #fff;
+  font-size: 15px;
+}

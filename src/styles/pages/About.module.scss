@@ -1,0 +1,60 @@
+@use "../globals/forward.scss" as *;
+
+.inner {
+  margin: 160px auto 0;
+  padding: 0 50px;
+  max-width: 900px;
+  @include tb {
+    max-width: 600px;
+  }
+  @include sp {
+    margin-top: 50px;
+    padding: 0 20px;
+    max-width: 400px;
+  }
+}
+
+.title {
+  font-size: 50px;
+  color: #fff;
+  font-family: "Shrikhand", cursive;
+  text-align: center;
+}
+
+.contents {
+  margin: 30px auto;
+  max-width: 600px;
+}
+
+.me {
+  display: flex;
+  margin-top: 50px;
+  @include sp {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.icon {
+  margin-bottom: 40px;
+  width: 40%;
+  text-align: center;
+  > img {
+    width: 70%;
+    border-radius: 50%;
+  }
+  @include sp {
+    width: 70%;
+  }
+}
+
+.introduction {
+  width: 60%;
+  color: $COLOR_WHITE;
+  line-height: 35px;
+  letter-spacing: 0.5px;
+
+  @include sp {
+    width: 100%;
+  }
+}
