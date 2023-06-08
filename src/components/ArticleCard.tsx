@@ -1,18 +1,20 @@
 import React from "react";
 import style from "~/styles/components/ArticleCard.module.scss";
+import { changeCategoryLabel } from "~/utils/category";
 
 type ArticleCardProps = {
   title: string;
-  category: "web" | "hobby" | "other";
+  category: string;
   date: string;
 };
 
 export const ArticleCard: React.FC<ArticleCardProps> = (props) => {
+  const label = changeCategoryLabel(props.category);
   return (
     <article className={style.wrapper} data-type="archive">
       <a href="/">
         <p className={style.category} data-category={props.category}>
-          {props.category}
+          {label}
         </p>
         <div className={style.icon}>
           <img src="/icons/sample-icon.svg" alt="" />

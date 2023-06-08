@@ -3,9 +3,14 @@ import { NextPage } from "next";
 import { Layout } from "~/components/Layout";
 import style from "~/styles/pages/Notes.module.scss";
 import { ArticleCard } from "~/components/ArticleCard";
+import { api } from "~/utils/api";
+import { changeDateToString } from "~/utils/date";
 
 const Notes: NextPage = () => {
+  const posts = api.post.index.useQuery().data;
+  const categories = api.category.index.useQuery().data;
   const [selectedCategory, setSelectedCategory] = useState("all");
+
   return (
     <Layout>
       <div className={style.inner}>
@@ -98,12 +103,12 @@ const Notes: NextPage = () => {
           className={style.article_list}
           data-is-show={selectedCategory === "all" ? "true" : "false"}
         >
-          {[...Array(10)].map((_, index) => (
+          {posts?.map((post) => (
             <ArticleCard
-              key={index}
-              title="クリックしたらポヨンポヨンするアニメーションの作り方"
-              category="web"
-              date="2023/12/12"
+              key={post.id}
+              title={post.title}
+              category={post.posts_category_links[0]?.categories?.name}
+              date={changeDateToString(post.updated_at)}
             />
           ))}
         </section>
