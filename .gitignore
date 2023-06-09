@@ -40,3 +40,4 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+DB_data
