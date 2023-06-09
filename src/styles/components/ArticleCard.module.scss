@@ -24,7 +24,7 @@
   }
   @include sp {
     &:hover {
-      animation-name: tileClick 0.3s;
+      animation-name: tileClick;
     }
   }
 }
