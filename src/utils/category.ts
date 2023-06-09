@@ -1,4 +1,4 @@
-export const changeCategoryLabel = (category: "web" | "hobby" | "other") => {
+export const changeCategoryLabel = (category: string) => {
   switch (category) {
     case "web":
       return "Web";

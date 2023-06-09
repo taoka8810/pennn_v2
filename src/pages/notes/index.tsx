@@ -7,8 +7,6 @@ import { api } from "~/utils/api";
 import { changeDateToString } from "~/utils/date";
 
 const Notes: NextPage = () => {
-  const posts = api.post.index.useQuery().data;
-  const categories = api.category.index.useQuery().data;
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   return (
@@ -103,12 +101,12 @@ const Notes: NextPage = () => {
           className={style.article_list}
           data-is-show={selectedCategory === "all" ? "true" : "false"}
         >
-          {posts?.map((post) => (
+          {[...Array(10)].map((_, index) => (
             <ArticleCard
-              key={post.id}
-              title={post.title}
-              category={post.posts_category_links[0]?.categories?.name}
-              date={changeDateToString(post.updated_at)}
+              key={index}
+              title="クリックしたらポヨンポヨンするアニメーションの作り方"
+              category="hobby"
+              date="2023/12/12"
             />
           ))}
         </section>

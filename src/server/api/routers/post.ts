@@ -11,7 +11,11 @@ export const postRouter = createTRPCRouter({
             categories: true,
           },
         },
-        posts_tags_links: true,
+        posts_tags_links: {
+          include: {
+            tags: true,
+          },
+        },
       },
     });
   }),
