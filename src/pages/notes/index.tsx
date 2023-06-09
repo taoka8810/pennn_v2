@@ -3,8 +3,6 @@ import { NextPage } from "next";
 import { Layout } from "~/components/Layout";
 import style from "~/styles/pages/Notes.module.scss";
 import { ArticleCard } from "~/components/ArticleCard";
-import { api } from "~/utils/api";
-import { changeDateToString } from "~/utils/date";
 
 const Notes: NextPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
