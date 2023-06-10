@@ -2,18 +2,14 @@ import { prisma } from "~/server/db";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 import { z } from "zod";
 
-export const postRouter = createTRPCRouter({
+export const noteRouter = createTRPCRouter({
   index: publicProcedure.query(async () => {
-    return await prisma.posts.findMany({
+    return await prisma.note.findMany({
       include: {
-        posts_category_links: {
+        category: true,
+        TagsOnNotes: {
           include: {
-            categories: true,
-          },
-        },
-        posts_tags_links: {
-          include: {
-            tags: true,
+            tag: true,
           },
         },
       },
@@ -26,7 +22,7 @@ export const postRouter = createTRPCRouter({
       })
     )
     .query(async ({ input }) => {
-      return await prisma.posts.findUnique({
+      return await prisma.note.findUnique({
         where: {
           id: input.id,
         },

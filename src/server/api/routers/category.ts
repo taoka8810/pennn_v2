@@ -3,6 +3,6 @@ import { createTRPCRouter, publicProcedure } from "../trpc";
 
 export const categoryRouter = createTRPCRouter({
   index: publicProcedure.query(async () => {
-    return await prisma.categories.findMany();
+    return await prisma.category.findMany();
   }),
 });
