@@ -1,13 +1,16 @@
-import React from "react";
-import style from "~/styles/pages/About.module.scss";
-import { Layout } from "~/components/Layout";
-import { NextPage } from "next";
+"use client";
 
-const About: NextPage = () => {
+import { shrikhand } from "~/utils/fonts";
+import { Layout } from "../elements/Layout";
+import style from "~/styles/pages/Profile.module.scss";
+
+export const ProfilePage = () => {
   return (
     <Layout>
       <div className={style.inner}>
-        <h1 className={style.title}>About Me</h1>
+        <h1 className={style.title} style={shrikhand.style}>
+          About Me
+        </h1>
         <div className={style.contents}>
           <section className={style.me}>
             <div className={style.icon}>
@@ -24,5 +27,3 @@ const About: NextPage = () => {
     </Layout>
   );
 };
-
-export default About;

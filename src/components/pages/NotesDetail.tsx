@@ -1,9 +1,9 @@
-import { NextPage } from "next";
-import React from "react";
-import { Layout } from "~/components/Layout";
-import style from "~/styles/pages/Post.module.scss";
+"use client";
 
-const Post: NextPage = () => {
+import { Layout } from "../elements/Layout";
+import style from "~/styles/pages/NotesDetail.module.scss";
+
+export const NotesDetailPage = () => {
   return (
     <Layout>
       <main className={style.post}>
@@ -33,5 +33,3 @@ const Post: NextPage = () => {
     </Layout>
   );
 };
-
-export default Post;
