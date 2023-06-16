@@ -108,6 +108,7 @@ export const NotesPage = () => {
           {posts?.map((post) => (
             <ArticleCard
               key={post.id}
+              id={post.id}
               title={post.title}
               category={post.category.name}
               date={changeDateToString(post.createdAt)}
@@ -126,6 +127,7 @@ export const NotesPage = () => {
               return (
                 <ArticleCard
                   key={post.id}
+                  id={post.id}
                   title={post.title}
                   category={post.category.name}
                   date={changeDateToString(post.createdAt)}
@@ -146,6 +148,7 @@ export const NotesPage = () => {
               return (
                 <ArticleCard
                   key={post.id}
+                  id={post.id}
                   title={post.title}
                   category={post.category.name}
                   date={changeDateToString(post.createdAt)}
@@ -166,6 +169,7 @@ export const NotesPage = () => {
               return (
                 <ArticleCard
                   key={post.id}
+                  id={post.id}
                   title={post.title}
                   category={post.category.name}
                   date={changeDateToString(post.createdAt)}
