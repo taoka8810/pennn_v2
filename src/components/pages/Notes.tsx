@@ -121,14 +121,18 @@ export const NotesPage = () => {
           className={style.article_list}
           data-is-show={selectedCategory === "web" ? "true" : "false"}
         >
-          {[...Array(10)].map((_, index) => (
-            <ArticleCard
-              key={index}
-              title="クリックしたらポヨンポヨンするアニメーションの作り方"
-              category="hobby"
-              date="2023/12/12"
-            />
-          ))}
+          {posts?.map((post) => {
+            if (post.category.name === "web") {
+              return (
+                <ArticleCard
+                  key={post.id}
+                  title={post.title}
+                  category={post.category.name}
+                  date={changeDateToString(post.createdAt)}
+                />
+              );
+            }
+          })}
         </section>
 
         {/* hobby articles */}
@@ -137,14 +141,18 @@ export const NotesPage = () => {
           className={style.article_list}
           data-is-show={selectedCategory === "hobby" ? "true" : "false"}
         >
-          {[...Array(10)].map((_, index) => (
-            <ArticleCard
-              key={index}
-              title="クリックしたらポヨンポヨンするアニメーションの作り方"
-              category="hobby"
-              date="2023/12/12"
-            />
-          ))}
+          {posts?.map((post) => {
+            if (post.category.name === "hobby") {
+              return (
+                <ArticleCard
+                  key={post.id}
+                  title={post.title}
+                  category={post.category.name}
+                  date={changeDateToString(post.createdAt)}
+                />
+              );
+            }
+          })}
         </section>
 
         {/* other articles */}
@@ -153,14 +161,18 @@ export const NotesPage = () => {
           className={style.article_list}
           data-is-show={selectedCategory === "other" ? "true" : "false"}
         >
-          {[...Array(10)].map((_, index) => (
-            <ArticleCard
-              key={index}
-              title="クリックしたらポヨンポヨンするアニメーションの作り方"
-              category="other"
-              date="2023/12/12"
-            />
-          ))}
+          {posts?.map((post) => {
+            if (post.category.name === "other") {
+              return (
+                <ArticleCard
+                  key={post.id}
+                  title={post.title}
+                  category={post.category.name}
+                  date={changeDateToString(post.createdAt)}
+                />
+              );
+            }
+          })}
         </section>
       </div>
     </Layout>
