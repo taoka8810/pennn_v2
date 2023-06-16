@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import style from "~/styles/components/ArticleCard.module.scss";
 import { changeCategoryLabel } from "~/utils/category";

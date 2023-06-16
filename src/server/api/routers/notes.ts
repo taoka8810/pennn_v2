@@ -1,4 +1,4 @@
-import { prisma } from "~/server/db";
+import { prisma } from "../../db";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 import { z } from "zod";
 
