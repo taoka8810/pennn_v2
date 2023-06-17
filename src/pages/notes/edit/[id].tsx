@@ -1,11 +1,8 @@
 import { NextPage } from "next";
+import { NotesEditPage } from "~/components/pages/NotesEdit";
 
 const NotesEdit: NextPage = () => {
-  return (
-    <main>
-      <h1>編集ページ</h1>
-    </main>
-  );
+  return <NotesEditPage />;
 };
 
 export default NotesEdit;
