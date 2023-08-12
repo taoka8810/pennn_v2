@@ -52,7 +52,7 @@ export const HomePage = () => {
             className={`${style.tile_twitter} ${style.tile_animation}`}
             href="https://twitter.com/yasai_tarinai"
           >
-            <img src="/icons/twitter-white.svg" alt="twitter icon" />
+            <img src="/icons/x-twitter-white.svg" alt="twitter icon" />
           </a>
           {/* GitHub Tile */}
           <a className={`${style.tile_github} ${style.tile_animation}`} href="">

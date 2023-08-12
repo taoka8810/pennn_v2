@@ -70,7 +70,7 @@ export const Header: React.FC = () => {
             </a>
             <div className={style.nav_sns} data-is-open={`${isOpen}`}>
               <a className={style.nav_twitter} href="">
-                <img src="/icons/twitter-black.svg" alt="twitter icon" />
+                <img src="/icons/x-twitter-black.svg" alt="twitter icon" />
               </a>
               <a className={style.nav_github} href="">
                 <img src="/icons/github-black.svg" alt="github icon" />
