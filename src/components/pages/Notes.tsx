@@ -2,22 +2,28 @@
 
 import { useState } from "react";
 import style from "~/styles/pages/Notes.module.scss";
-import { Layout } from "../elements/Layout";
 import { ArticleCard } from "../elements/ArticleCard";
-import { shrikhand } from "~/utils/fonts";
-import { api } from "~/utils/api";
 import { changeDateToString } from "~/utils/date";
+import { WP_Category, WP_Media, WP_Tag } from "~/utils/wp-type";
+import { NoteModel } from "~/app/notes/page";
+import { Header } from "../elements/Header";
+import { Footer } from "../elements/Footer";
 
-export const NotesPage = () => {
-  const posts = api.note.index.useQuery().data;
+type NotesProps = {
+  notes: NoteModel[];
+  categories: WP_Category[];
+};
+
+export const NotesPage: React.FC<NotesProps> = (props) => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   return (
-    <Layout>
+    <>
+      <Header />
       <div className={style.inner}>
-        <h1 className={style.title} style={shrikhand.style}>
-          Notes
-        </h1>
-        <form className={style.category_button_list} id="button-group">
+        <h1 className={style.title}>Notes</h1>
+        {/* カテゴリーバー */}
+        <form className={style.category_button_list}>
+          {/* ALL */}
           <div className={style.category_button_wrapper}>
             <input
               className={style.radio_button}
@@ -38,6 +44,7 @@ export const NotesPage = () => {
             <p className={style.category_name}>ALL</p>
           </div>
 
+          {/* Web */}
           <div className={style.category_button_wrapper}>
             <input
               className={style.radio_button}
@@ -58,6 +65,7 @@ export const NotesPage = () => {
             <p className={style.category_name}>Web</p>
           </div>
 
+          {/* Hobby */}
           <div className={style.category_button_wrapper}>
             <input
               className={style.radio_button}
@@ -78,6 +86,7 @@ export const NotesPage = () => {
             <p className={style.category_name}>Hobby</p>
           </div>
 
+          {/* Other */}
           <div className={style.category_button_wrapper}>
             <input
               className={style.radio_button}
@@ -99,86 +108,28 @@ export const NotesPage = () => {
           </div>
         </form>
 
-        {/* all articles */}
-        <section
-          id="contents-all"
-          className={style.article_list}
-          data-is-show={selectedCategory === "all" ? "true" : "false"}
-        >
-          {posts?.map((post) => (
-            <ArticleCard
-              key={post.id}
-              id={post.id}
-              title={post.title}
-              category={post.category.name}
-              date={changeDateToString(post.createdAt)}
-            />
-          ))}
-        </section>
-
-        {/* Web articles */}
-        <section
-          id="contents-web"
-          className={style.article_list}
-          data-is-show={selectedCategory === "web" ? "true" : "false"}
-        >
-          {posts?.map((post) => {
-            if (post.category.name === "web") {
-              return (
-                <ArticleCard
-                  key={post.id}
-                  id={post.id}
-                  title={post.title}
-                  category={post.category.name}
-                  date={changeDateToString(post.createdAt)}
-                />
-              );
-            }
-          })}
-        </section>
-
-        {/* hobby articles */}
-        <section
-          id="contents-hobby"
-          className={style.article_list}
-          data-is-show={selectedCategory === "hobby" ? "true" : "false"}
-        >
-          {posts?.map((post) => {
-            if (post.category.name === "hobby") {
-              return (
-                <ArticleCard
-                  key={post.id}
-                  id={post.id}
-                  title={post.title}
-                  category={post.category.name}
-                  date={changeDateToString(post.createdAt)}
-                />
-              );
-            }
-          })}
-        </section>
-
-        {/* other articles */}
-        <section
-          id="contents-other"
-          className={style.article_list}
-          data-is-show={selectedCategory === "other" ? "true" : "false"}
-        >
-          {posts?.map((post) => {
-            if (post.category.name === "other") {
-              return (
-                <ArticleCard
-                  key={post.id}
-                  id={post.id}
-                  title={post.title}
-                  category={post.category.name}
-                  date={changeDateToString(post.createdAt)}
-                />
-              );
-            }
-          })}
+        {/* 記事セクション */}
+        <section className={style.article_list}>
+          {props.notes
+            // 選択されたカテゴリーに応じてフィルタリング
+            .filter((post) =>
+              selectedCategory === "all"
+                ? true
+                : post.category.slug === selectedCategory
+            )
+            .map((post) => (
+              <ArticleCard
+                key={post.id}
+                id={post.id}
+                title={post.title}
+                category={post.category}
+                icon={post.thumbnail}
+                date={changeDateToString(post.publishedDate)}
+              />
+            ))}
         </section>
       </div>
-    </Layout>
+      <Footer />
+    </>
   );
 };

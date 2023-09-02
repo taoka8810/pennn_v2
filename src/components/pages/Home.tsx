@@ -2,64 +2,59 @@
 
 import style from "~/styles/pages/Home.module.scss";
 import u from "~/styles/utils/display.module.scss";
-import { Layout } from "../elements/Layout";
-import { pacifico, shrikhand } from "~/utils/fonts";
+import Link from "next/link";
 
 export const HomePage = () => {
   return (
-    <Layout>
-      <section className={style.title_wrapper}>
-        <h1 className={style.title} style={pacifico.style}>
-          Pennn
-        </h1>
+    <>
+      <section className={style.title__wrapper}>
+        <h1 className={style.title}>Pennn</h1>
       </section>
+
       <section className={style.tiles}>
-        <div className={style.tiles_top}>
-          {/* Notes Tile */}
-          <a
-            className={`${style.tile_notes} ${style.tile_animation}`}
-            href="/notes"
-          >
-            <span style={shrikhand.style}>Notes</span>
-          </a>
-          {/* Portforio Tile */}
-          <a
-            className={`${style.tile_portforio} ${style.tile_animation}`}
-            href="/portforio"
-          >
-            <span style={shrikhand.style}>Portforio</span>
-          </a>
-        </div>
-        {/* About Me Tile (only SP) */}
-        <a
-          className={`${style.tile_about} ${style.tile_animation} ${u.only_sp}`}
+        {/* Notes Tile */}
+        <Link
+          className={`${style.tile_notes} ${style.tile_animation}`}
+          href="/notes"
+        >
+          <span>Notes</span>
+        </Link>
+
+        {/* Portforio Tile */}
+        <Link
+          className={`${style.tile_portforio} ${style.tile_animation}`}
+          href="/portforio"
+        >
+          <span>Portforio</span>
+        </Link>
+
+        {/* About Tile */}
+        <Link
+          className={`${style.tile_about} ${style.tile_animation} ${u.only_pc}`}
           href="/profile"
         >
-          <span style={shrikhand.style}>About</span>
-          <span style={shrikhand.style}>Me</span>
-        </a>
-        <div className={style.tiles_bottom}>
-          {/* About Tile (only PC) */}
-          <a
-            className={`${style.tile_about} ${style.tile_animation} ${u.only_pc}`}
-            href="/profile"
-          >
-            <span style={shrikhand.style}>About</span>
-            <span style={shrikhand.style}>Me</span>
-          </a>
-          {/* Twitter Tile */}
-          <a
+          <span>About</span>
+          <span>Me</span>
+        </Link>
+
+        <div className={style.snsTiles}>
+          {/* X Tile */}
+          <Link
             className={`${style.tile_twitter} ${style.tile_animation}`}
             href="https://twitter.com/yasai_tarinai"
           >
             <img src="/icons/x-twitter-white.svg" alt="twitter icon" />
-          </a>
+          </Link>
+
           {/* GitHub Tile */}
-          <a className={`${style.tile_github} ${style.tile_animation}`} href="">
+          <Link
+            className={`${style.tile_github} ${style.tile_animation}`}
+            href=""
+          >
             <img src="/icons/github-gray.svg" alt="github icon" />
-          </a>
+          </Link>
         </div>
       </section>
-    </Layout>
+    </>
   );
 };

@@ -1,16 +1,15 @@
 "use client";
 
-import { shrikhand } from "~/utils/fonts";
-import { Layout } from "../elements/Layout";
 import style from "~/styles/pages/Profile.module.scss";
+import { Header } from "../elements/Header";
+import { Footer } from "../elements/Footer";
 
 export const ProfilePage = () => {
   return (
-    <Layout>
+    <>
+      <Header />
       <div className={style.inner}>
-        <h1 className={style.title} style={shrikhand.style}>
-          About Me
-        </h1>
+        <h1 className={style.title}>About Me</h1>
         <div className={style.contents}>
           <section className={style.me}>
             <div className={style.icon}>
@@ -24,6 +23,7 @@ export const ProfilePage = () => {
           </section>
         </div>
       </div>
-    </Layout>
+      <Footer />
+    </>
   );
 };

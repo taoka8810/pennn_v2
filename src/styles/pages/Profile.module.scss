@@ -1,7 +1,7 @@
 @use "../globals/forward.scss" as *;
 
 .inner {
-  margin: 160px auto 0;
+  margin: 50px auto 0;
   padding: 0 50px;
   max-width: 900px;
   @include tb {
@@ -16,6 +16,7 @@
 
 .title {
   font-size: 50px;
+  font-family: "Shrikhand", cursive;
   color: #fff;
   text-align: center;
 }

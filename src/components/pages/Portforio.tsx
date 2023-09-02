@@ -1,16 +1,18 @@
 "use client";
 
-import { Layout } from "../elements/Layout";
 import style from "~/styles/pages/Portforio.module.scss";
-import { shrikhand } from "~/utils/fonts";
+import { Header } from "../elements/Header";
+import { Footer } from "../elements/Footer";
 
 export const PortforioPage = () => {
   return (
-    <Layout>
-      <div className={style.inner} style={shrikhand.style}>
+    <>
+      <Header />
+      <div className={style.inner}>
         <h1 className={style.title}>Portforio</h1>
         <p className={style.text}>まだ掲載できるものがないんです(; ;)</p>
       </div>
-    </Layout>
+      <Footer />
+    </>
   );
 };

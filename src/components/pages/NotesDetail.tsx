@@ -1,35 +1,71 @@
 "use client";
 
-import { Layout } from "../elements/Layout";
+import { NoteModel } from "~/app/notes/page";
 import style from "~/styles/pages/NotesDetail.module.scss";
+import "node_modules/highlight.js/styles/atom-one-dark.css";
+import Image from "next/image";
+import { changeDateToString } from "~/utils/date";
+import { Header } from "../elements/Header";
+import { Footer } from "../elements/Footer";
 
-export const NotesDetailPage = () => {
+export type NotesDetailProps = {
+  note: NoteModel;
+};
+
+export const NotesDetailPage: React.FC<NotesDetailProps> = ({ note }) => {
+  const publishedDate = changeDateToString(note.publishedDate);
+  const modifiedDate = changeDateToString(note.modifiedDate);
+
   return (
-    <Layout>
+    <>
+      <Header />
       <main className={style.post}>
         <section className={style.heading}>
+          {/* アイコン */}
           <div className={style.heading_icon}>
-            <img src="/icons/post-icon.svg" alt="post icon" />
+            <Image
+              src={note.thumbnail.guid.rendered}
+              alt="post icon"
+              width={70}
+              height={70}
+            />
           </div>
-          <h1 className={style.title}>記事タイトル</h1>
+
+          {/* タイトル */}
+          <h1 className={style.title}>{note.title}</h1>
+
           <div className={style.tag_wrapper}>
-            <span className={style.category_tag} data-category="web">
-              Web
+            {/* カテゴリー */}
+            <span
+              className={style.category_tag}
+              data-category={note.category.slug}
+            >
+              {note.category.name}
             </span>
-            <span className={style.keyword_tag}>HTML</span>
-            <span className={style.keyword_tag}>CSS</span>
-            <span className={style.keyword_tag}>JavaScript</span>
+
+            {/* タグ */}
+            {note.tags.map((tag) => (
+              <span className={style.keyword_tag}>{tag.name}</span>
+            ))}
           </div>
-          <div className={style.date}>公開日: 2023/05/28</div>
-          <div className={style.date}>更新日: 2023/05/28</div>
+
+          {/* 公開日 */}
+          <p className={style.date}>公開日: {publishedDate}</p>
+
+          {/* 更新日(公開日と同じなら非表示) */}
+          {publishedDate !== modifiedDate && (
+            <p className={style.date}>更新日: {modifiedDate}</p>
+          )}
         </section>
-        <section className={style.body} id="content">
-          <h2>見出しです</h2>
-          <p>
-            本文です本文です本文です本文です本文です本文です本文です本文です本文です
-          </p>
-        </section>
+
+        {/* 本文 */}
+        <section
+          id="content"
+          className={style.body}
+          dangerouslySetInnerHTML={{ __html: note.body }}
+        ></section>
       </main>
-    </Layout>
+      <Footer />
+    </>
   );
 };
