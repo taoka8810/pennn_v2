@@ -10,7 +10,7 @@
 }
 
 .title {
-  font-family: "Pacifico", sans-serif;
+  font-family: $FONT_PACIFICO;
   font-size: 70px;
   color: #fff;
 
@@ -82,7 +82,7 @@
   font-size: 55px;
   color: #fff;
   font-weight: bold;
-  font-family: "Shrikhand", cursive;
+  font-family: $FONT_SHRIKHAND;
 
   @include tb {
     font-weight: 500;
@@ -92,7 +92,7 @@
   }
 }
 
-.tile_portforio {
+.tile_works {
   @extend %base_tile_style;
   position: relative;
   grid-column: 3/5;
@@ -106,26 +106,26 @@
   }
 }
 
-.tile_portforio::before {
+.tile_works::before {
   content: "";
   position: absolute;
   top: 0px;
   left: 0px;
   right: 0px;
   bottom: 0px;
-  background-image: url("/images/tile-image-portforio.png");
+  background-image: url("/images/tile-image-works.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom;
 }
 
-.tile_portforio span {
+.tile_works span {
   position: relative;
   bottom: 70px;
   color: #fff;
   font-size: 55px;
   font-weight: bold;
-  font-family: "Shrikhand", cursive;
+  font-family: $FONT_SHRIKHAND;
 
   @include tb {
     font-weight: 500;
@@ -172,7 +172,7 @@
   color: #fff;
   font-size: 45px;
   font-weight: bold;
-  font-family: "Shrikhand", cursive;
+  font-family: $FONT_SHRIKHAND;
   &:first-child {
     font-size: 50px;
     top: -25px;

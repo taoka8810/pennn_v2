@@ -20,12 +20,12 @@ export const HomePage = () => {
           <span>Notes</span>
         </Link>
 
-        {/* Portforio Tile */}
+        {/* Works Tile */}
         <Link
-          className={`${style.tile_portforio} ${style.tile_animation}`}
-          href="/portforio"
+          className={`${style.tile_works} ${style.tile_animation}`}
+          href="/works"
         >
-          <span>Portforio</span>
+          <span>Works</span>
         </Link>
 
         {/* About Tile */}

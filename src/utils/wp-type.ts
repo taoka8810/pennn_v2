@@ -144,4 +144,4 @@ export type WP_Media = {
   missing_image_sizes?: any[];
 };
 
-export type WP_CustomPostType = "post" | "portforio";
+export type WP_CustomPostType = "post" | "works";
