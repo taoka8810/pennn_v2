@@ -9,7 +9,7 @@ export const ProfilePage = () => {
     <>
       <Header />
       <div className={style.inner}>
-        <h1 className={style.title}>About Me</h1>
+        <h1 className={style.title}>Profile</h1>
         <div className={style.contents}>
           <section className={style.me}>
             <div className={style.icon}>
