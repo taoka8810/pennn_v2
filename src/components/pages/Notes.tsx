@@ -12,6 +12,7 @@ import { Footer } from "../elements/Footer";
 type NotesProps = {
   notes: NoteModel[];
   categories: WP_Category[];
+  tags: WP_Tag[];
 };
 
 export const NotesPage: React.FC<NotesProps> = (props) => {
@@ -107,6 +108,13 @@ export const NotesPage: React.FC<NotesProps> = (props) => {
             <p className={style.category_name}>Other</p>
           </div>
         </form>
+
+        {/* カテゴリー */}
+        {/* <section className={style.notes__category}>
+          {props.tags.map((tag) => (
+            <p>{tag.name}</p>
+          ))}
+        </section> */}
 
         {/* 記事セクション */}
         <section className={style.article_list}>

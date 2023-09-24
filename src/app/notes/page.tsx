@@ -2,7 +2,7 @@ import { NotesPage } from "~/components/pages/Notes";
 import { getAllCategory, getCategoryById } from "~/models/category";
 import { getMediaById } from "~/models/media";
 import { getAllPost } from "~/models/post";
-import { getTagById } from "~/models/tag";
+import { getAllTag, getTagById } from "~/models/tag";
 import { WP_Category, WP_Media, WP_Tag } from "~/utils/wp-type";
 
 export type NoteModel = {
@@ -18,10 +18,13 @@ export type NoteModel = {
 
 export default async function Notes() {
   // 全てのカテゴリーを取得
-  const allCategory: WP_Category[] = await getAllCategory();
+  const allCategory = await getAllCategory();
+
+  // タグを頻度が高い順に20件取得
+  const allTag = await getAllTag(20, "desc", "count");
 
   // 全ての投稿を取得
-  const allNote: NoteModel[] = await getAllPost("post").then(
+  const allNote = await getAllPost("post").then(
     async (allPost) =>
       await Promise.all(
         // カテゴリー,タグ,サムネイルはidだけが返ってくるので別個で取得する
@@ -50,5 +53,5 @@ export default async function Notes() {
       )
   );
 
-  return <NotesPage notes={allNote} categories={allCategory} />;
+  return <NotesPage notes={allNote} categories={allCategory} tags={allTag} />;
 }
